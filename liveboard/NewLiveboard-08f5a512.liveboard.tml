@@ -1,0 +1,345 @@
+obj_id: NewLiveboard-08f5a512
+liveboard:
+  name: Sales Team Performance - Shreyash - v1
+  description: "Tracks sales team performance across time, regions, stores, and product categories."
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Total Sales Last 12 Months
+      description: Annual sales over past year
+      tables:
+      - id: (Sample) Retail - Apparel
+        name: (Sample) Retail - Apparel
+      search_query: "[sales]"
+      answer_columns:
+      - name: Total sales
+      table:
+        table_columns:
+        - column_id: Total sales
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Total sales
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Total sales
+        axis_configs:
+        - "y":
+          - Total sales
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: 070e5d53-30fe-4c4c-82ac-3041e8114207
+  - id: Viz_2
+    answer:
+      name: Monthly Sales Trend Last Year
+      description: Monthly sales over 12 months
+      tables:
+      - id: (Sample) Retail - Apparel
+        name: (Sample) Retail - Apparel
+      search_query: "[sales] [date].monthly [date].'last 12 months'"
+      answer_columns:
+      - name: Month(date)
+      - name: Total sales
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: MILLION
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: false
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Month(date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total sales
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Month(date)
+        - Total sales
+        client_state: ""
+      chart:
+        type: ADVANCED_LINE
+        chart_columns:
+        - column_id: Month(date)
+        - column_id: Total sales
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Month(date)
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Total sales
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        custom_visual_props: "{\"chartSettingsVersion\":\"1\"}"
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": false},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total sales\"],\"properties\": {\"is_name_visible\": false}},{\"linked_columns\": [\"Month(date)\"],\"properties\": {\"is_name_visible\": false}}],\"column_properties\": [{\"column_id\": \"Total sales\",\"properties\": {\"color\": \"#5b87b5\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: 7ae6b2c9-b927-4dc6-beb2-279eac9361ce
+  - id: Viz_3
+    answer:
+      name: Sales by Region
+      description: Regional sales performance breakdown.
+      tables:
+      - id: (Sample) Retail - Apparel
+        name: (Sample) Retail - Apparel
+      search_query: "[sales] [region]"
+      answer_columns:
+      - name: Total sales
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: MILLION
+            decimals: 0.0
+            toSeparateThousands: true
+            removeTrailingZeroes: false
+          isCategoryEditable: true
+      - name: region
+      table:
+        table_columns:
+        - column_id: Total sales
+          headline_aggregation: SUM
+        - column_id: region
+          headline_aggregation: COUNT_DISTINCT
+        ordered_column_ids:
+        - region
+        - Total sales
+        client_state: ""
+      chart:
+        type: ADVANCED_COLUMN
+        chart_columns:
+        - column_id: Total sales
+        - column_id: region
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: region
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Total sales
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        custom_visual_props: "{\"chartSettingsVersion\":\"1\"}"
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": false},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total sales\"],\"properties\": {\"is_name_visible\": false}},{\"linked_columns\": [\"region\"],\"properties\": {\"is_name_visible\": false}}],\"column_properties\": [{\"column_id\": \"Total sales\",\"properties\": {\"color\": \"#5b87b5\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: 9adf81a2-f1a1-4b63-a1e9-0ab25f74cf68
+  - id: Viz_4
+    answer:
+      name: Sales by Region and Item Type
+      description: Regional sales across item types
+      tables:
+      - id: (Sample) Retail - Apparel
+        name: (Sample) Retail - Apparel
+      search_query: "[sales] [item type] [region]"
+      answer_columns:
+      - name: Total sales
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: MILLION
+            decimals: 0.0
+            toSeparateThousands: true
+            removeTrailingZeroes: false
+          isCategoryEditable: true
+      - name: item type
+      - name: region
+      table:
+        table_columns:
+        - column_id: Total sales
+          headline_aggregation: SUM
+        - column_id: item type
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: region
+          headline_aggregation: COUNT_DISTINCT
+        ordered_column_ids:
+        - item type
+        - region
+        - Total sales
+        client_state: ""
+      chart:
+        type: ADVANCED_STACKED_COLUMN
+        chart_columns:
+        - column_id: Total sales
+        - column_id: item type
+        - column_id: region
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: item type
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Total sales
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            axes:
+            - type: FLAT
+              column: region
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        custom_visual_props: "{\"chartSettingsVersion\":\"1\"}"
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": true,\"position\": \"BOTTOM_LEGEND\",\"color_palette\": {\"colors\": [\"#bcd0e6\",\"#8fb0d3\",\"#5b87b5\",\"#43688f\",\"#2f4b6b\",\"#b5dad8\",\"#86bdba\",\"#4f9a98\",\"#3c7877\",\"#2a5655\",\"#c5cbe6\",\"#9ca7d3\",\"#6f7db8\",\"#535f94\",\"#3b4570\",\"#cbd3da\",\"#a5b2be\",\"#7f909f\",\"#627381\",\"#45525d\",\"#bfe0ee\",\"#8fc6de\",\"#5aa7c8\",\"#42819f\",\"#2e5c73\",\"#c6dccb\",\"#9dc0a5\",\"#74a280\",\"#587f63\",\"#3f5c48\",\"#d4cde6\",\"#b5a9d3\",\"#9485bc\",\"#6f6296\",\"#4d4468\",\"#e3d8c3\",\"#cdbb98\",\"#b09b6e\",\"#8a774f\",\"#625434\"]}},\"data_label_properties\": {\"stack_labels_properties\": {\"is_visible\": true},\"column_data_label_properties\": [{\"column_id\": \"Total sales\",\"properties\": {\"is_visible\": false}}]},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total sales\"],\"properties\": {\"is_name_visible\": false}},{\"linked_columns\": [\"region\"],\"properties\": {\"is_name_visible\": false}},{\"linked_columns\": [\"item type\"],\"properties\": {\"is_name_visible\": false}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: 1cfc6464-9491-41d0-a8a0-e9dcc7a00b83
+  - id: Viz_5
+    answer:
+      name: Top 10 Stores by Sales
+      description: Highest revenue stores ranked.
+      tables:
+      - id: (Sample) Retail - Apparel
+        name: (Sample) Retail - Apparel
+      search_query: "top 10 [store] sort by [sales]"
+      answer_columns:
+      - name: Total sales
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: MILLION
+            decimals: 0.0
+            toSeparateThousands: true
+            removeTrailingZeroes: false
+          isCategoryEditable: true
+      - name: store
+      table:
+        table_columns:
+        - column_id: Total sales
+          headline_aggregation: SUM
+        - column_id: store
+          headline_aggregation: COUNT_DISTINCT
+        ordered_column_ids:
+        - store
+        - Total sales
+        client_state: ""
+      chart:
+        type: ADVANCED_BAR
+        chart_columns:
+        - column_id: Total sales
+        - column_id: store
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Total sales
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: store
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        custom_visual_props: "{\"chartSettingsVersion\":\"1\"}"
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": false},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total sales\"],\"properties\": {\"is_name_visible\": false}},{\"linked_columns\": [\"store\"],\"properties\": {\"is_name_visible\": false}}],\"column_properties\": [{\"column_id\": \"Total sales\",\"properties\": {\"color\": \"#5b87b5\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: c23fc706-b180-4aec-b23d-267f04da7a07
+  groups:
+  - id: Group_1
+    name: Sales Overview
+    description: Headline sales and monthly trend.
+    visualizations:
+    - Viz_1
+    - Viz_2
+    group_guid: 8ff5ade8-b8d1-42c1-8882-36c44a214425
+  - id: Group_2
+    name: Performance Breakdown
+    description: "Sales by region, store, and product category."
+    visualizations:
+    - Viz_3
+    - Viz_5
+    - Viz_4
+    group_guid: a5d4b33c-b5c1-4343-99e8-12b373c74151
+  layout:
+    tiles:
+    - visualization_id: Group_1
+      x: 0
+      "y": 0
+      height: 9
+      width: 12
+    - visualization_id: Group_2
+      x: 0
+      "y": 9
+      height: 18
+      width: 12
+    group_layouts:
+    - id: Group_1
+      tiles:
+      - visualization_id: Viz_1
+        x: 0
+        "y": 0
+        height: 8
+        width: 4
+      - visualization_id: Viz_2
+        x: 4
+        "y": 0
+        height: 8
+        width: 8
+    - id: Group_2
+      tiles:
+      - visualization_id: Viz_3
+        x: 0
+        "y": 0
+        height: 8
+        width: 6
+      - visualization_id: Viz_5
+        x: 6
+        "y": 0
+        height: 8
+        width: 6
+      - visualization_id: Viz_4
+        x: 0
+        "y": 8
+        height: 8
+        width: 12
+  style:
+    style_properties:
+    - name: lb_border_type
+      value: CURVED
+    - name: lb_brand_color
+      value: LBC_C
+    - name: hide_group_title
+      value: "false"
+    - name: hide_group_description
+      value: "true"
+    - name: hide_group_tile_description
+      value: "false"
+    - name: hide_tile_description
+      value: "false"
+    - name: kpi_hero_font_size
+      value: M
+    overrides:
+    - object_id: Viz_1
+      style_properties:
+      - name: tile_brand_color
+        value: TBC_C
+      - name: tile_kpi_color
+        value: TKS_K
