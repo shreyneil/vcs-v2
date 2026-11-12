@@ -1,6 +1,6 @@
 obj_id: NewLiveboard-08f5a512
 liveboard:
-  name: Sales Team Performance - Shreyash
+  name: Sales Team Performance - Shreyash - v1
   description: "Tracks sales team performance across time, regions, stores, and product categories."
   visualizations:
   - id: Viz_1
