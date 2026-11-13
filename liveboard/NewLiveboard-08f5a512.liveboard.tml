@@ -5,7 +5,7 @@ liveboard:
   visualizations:
   - id: Viz_1
     answer:
-      name: Total Sales Last 12 Months
+      name: Total Sales Last 12 Months for vendor
       description: Annual sales over past year
       tables:
       - id: (Sample) Retail - Apparel
@@ -20,6 +20,7 @@ liveboard:
         ordered_column_ids:
         - Total sales
         client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Total sales\",\"columnProperty\": {}}]}"
       chart:
         type: KPI
         chart_columns:
@@ -28,7 +29,9 @@ liveboard:
         - "y":
           - Total sales
         client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Total sales\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"9b77d30e-6d06-4240-9aab-5131c20978c3\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total sales\"],\"isOpposite\": false}},{\"id\": \"db556c42-f64a-4410-9e5d-de537c74e4a6\",\"properties\": {\"axisType\": \"X\"}}]}"
       display_mode: CHART_MODE
+      dynamic_name: Total Sales Last 12 Months for vendor
     viz_guid: 070e5d53-30fe-4c4c-82ac-3041e8114207
   - id: Viz_2
     answer:
@@ -264,7 +267,7 @@ liveboard:
     viz_guid: c23fc706-b180-4aec-b23d-267f04da7a07
   groups:
   - id: Group_1
-    name: Sales Overview
+    name: Sales Overview for leadership
     description: Headline sales and monthly trend.
     visualizations:
     - Viz_1
